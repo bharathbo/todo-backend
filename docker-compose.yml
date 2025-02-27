@@ -1,0 +1,15 @@
+version: '3'
+services:
+  backend:
+    build: ./  # The backend is inside `todo-app`
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+
+  frontend:
+    build: /home/bharath-ubuntu/frontend  # Use the correct absolute path
+    ports:
+       - "8080:80"  # Expose container's port 80 to host's port 8080
+    depends_on:
+      - backend
